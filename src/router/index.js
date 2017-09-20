@@ -11,23 +11,34 @@ Vue.use(Router)
 const routes = [
   {
     path: '/',
+    name: 'login',
+    component: Login,
+    beforeEnter: (to, from, next) => {
+      const authUser = JSON.parse(window.localStorage.getItem('authUser'))
+      if (authUser && authUser.access_token) {
+        next({name: 'home'})
+      } else {
+        next()
+      }
+    }
+  },
+  {
+    path: '/home',
     name: 'home',
-    component: Home
+    component: Home,
+    meta: { requiresAtuh: true }
   },
   {
     path: '/list1',
     name: 'list1',
-    component: List1
+    component: List1,
+    meta: { requiresAtuh: true }
   },
   {
     path: '/list2',
     name: 'list2',
-    component: List2
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Login
+    component: List2,
+    meta: { requiresAtuh: true }
   },
   {
     path: '*',
