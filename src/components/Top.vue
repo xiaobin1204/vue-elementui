@@ -11,17 +11,14 @@
 export default {
   data () {
     return {
-      activeIndex: 'home'
+      activeIndex: '/'
     }
   },
   methods: {
     handleSelect (key, keyPath) {
-      if (key === 'home') {
-        // this.$router.push({name: 'home'})
+      if (key === '/') {
       } else if (key === 'list1') {
-        // this.$router.push({name: 'list1'})
       } else if (key === 'list2') {
-        // this.$router.push({name: 'list2'})
       }
     }
   }
