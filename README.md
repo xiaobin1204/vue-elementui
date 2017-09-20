@@ -2,6 +2,8 @@
 
 > A Vue.js project
 
+[项目介绍](https://note.bbcoding.com/node/vue-elementui.html)
+
 ## Build Setup
 
 ``` bash
