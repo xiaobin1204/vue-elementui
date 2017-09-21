@@ -64,6 +64,10 @@ export default {
       }
     })
   },
+  // 这里要手动销毁监听的事件 不然会重复执行事件
+  destroyed () {
+    bus.$off('clearSelection')
+  },
   computed: {
     ...mapState({
       listStore: state => state.listStore
