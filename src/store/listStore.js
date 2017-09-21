@@ -4,12 +4,16 @@ const state = {
   isShow: false,
   currentPage: 1,
   total: 0,
+  checked: [],
   datas: null
 }
 
 const mutations = {
   SET_LIST (state, list) {
     state.list = list
+  },
+  SET_CHECKED (state, checked) {
+    state.checked = checked
   },
   SET_PAGE (state, page) {
     state.currentPage = page
@@ -32,6 +36,9 @@ const mutations = {
 }
 
 const actions = {
+  setchecked: ({commit}, checked) => {
+    commit('SET_CHECKED', checked)
+  },
   setdatas: ({commit}, data) => {
     const api = data.api
     const postData = {
@@ -39,7 +46,6 @@ const actions = {
     }
     axios.post(api, postData)
       .then(response => {
-        console.log(response)
         if (response.status === 200) {
           commit('SET_DATAS', response.data.res)
           commit('SET_TOTAL', response.data.total)

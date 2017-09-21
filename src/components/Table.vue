@@ -47,6 +47,7 @@
 </template>
 <script>
 import {mapState} from 'vuex'
+import {bus} from './../bus'
 
 export default {
   data () {
@@ -55,6 +56,14 @@ export default {
       info: ''
     }
   },
+  mounted () {
+    const tis = this
+    bus.$on('clearSelection', function () {
+      if (tis.$refs.DataTable) {
+        tis.$refs.DataTable.clearSelection()
+      }
+    })
+  },
   computed: {
     ...mapState({
       listStore: state => state.listStore
@@ -62,7 +71,7 @@ export default {
   },
   methods: {
     handleSelectionChange (value) {
-      console.log(value)
+      this.$store.dispatch('setchecked', value)
     },
     check (index) {
       const name = this.listStore.datas[index].name
