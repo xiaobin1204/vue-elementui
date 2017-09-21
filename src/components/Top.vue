@@ -23,8 +23,13 @@ export default {
   methods: {
     handleSelect (key, keyPath) {
       if (key === 'home') {
+        this.$store.dispatch('clearlist')
       } else if (key === 'list1') {
+        this.$store.dispatch('setlist', 'list1')
+        this.$store.dispatch('setshow', true)
       } else if (key === 'list2') {
+        this.$store.dispatch('setshow', false)
+        this.$store.dispatch('setlist', 'list2')
       }
     }
   }
